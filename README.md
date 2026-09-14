@@ -25,6 +25,24 @@ gate: FAIL
   ✗ overall score fell by 0.527, over the allowed 0.020
 ```
 
+**[querygate](https://github.com/Waddles1729/querygate)** — a read-only SQL MCP
+server. Give an agent a database without giving it the keys: a tokenising guard
+that refuses writes (including the ones hidden inside a CTE), tables the policy
+hides from introspection entirely, column masking applied on egress so
+`COUNT(DISTINCT email)` still returns the true number, and an audit trail that
+records the refusals too. SQLite and Postgres; the demo needs neither a database
+nor a credential.
+
+```
+name             email                   phone          city
+Mei Tanaka       [redacted]@example.com  *********1667  Sendai
+
+3 row(s) · 1ms · masked by policy: email, phone
+
+Query refused: only SELECT statements are allowed; this one starts with DROP
+Query refused: not permitted to read: employee_salaries
+```
+
 ### What I do day to day
 
 - **LLM systems** — LangGraph multi-agent architectures, RAG, knowledge graphs
