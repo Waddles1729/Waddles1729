@@ -1,21 +1,60 @@
-### Masanari Makino
+## Masanari Makino (Masa)
 
-**AI Engineer @ Coadmap**　・　ex-Sansan Data Engineer
+AI engineer at **Coadmap**, in Tokyo. Previously a data engineer at **Sansan**.
 
-大学での組み込みシステム研究に始まり、2018年からインターンとして医療系Web・モバイル開発 → データエンジニア → AIエンジニアと、約**7年**実務で手を動かしてきました（社会人歴は約3年）。
-Web / モバイル / データ / AI を横断して、個人で一気通貫に作り切るのが好きです。
+I came to LLM work through the layers underneath it — web and mobile applications,
+then data platforms, then infrastructure — and I still work across all of them.
+The part I care most about is the unglamorous half of shipping an AI feature:
+making it measurable, making it reproducible, and making it survive the next
+model upgrade.
 
-#### 🧪 Demos — 小さく動くもの
+### What I'm working on
 
-| Repo | 何を見せるか |
-|------|------------|
-| 🕸️ [web-data-automation-toolkit](https://github.com/Waddles1729/web-data-automation-toolkit) | config駆動のスクレイピング＆データ変換ツール |
-| 🗃️ [mini-etl](https://github.com/Waddles1729/mini-etl) | クレンジング＋データ品質チェック付きの小さなELTパイプライン |
-| 🤖 [llm-extract](https://github.com/Waddles1729/llm-extract) | LLMで非構造テキスト→構造化データ（プロバイダー非依存＋eval） |
-| 🖥️ [csv-studio](https://github.com/Waddles1729/csv-studio) | ブラウザ内CSVビューア/クリーナー（React + TypeScript） |
+**[evalgate](https://github.com/Waddles1729/evalgate)** — a regression gate for LLM
+applications. Score a feature against a golden dataset, diff it against a
+committed baseline, and fail the build when it gets worse. Nine scorers
+(deterministic, embedding-based, and LLM-as-judge including the RAG triad),
+cached model calls so it is affordable on every pull request, and a shipped
+example that runs offline with no API key.
 
-#### 🛠 Skills
+```
+score 0.442  (-0.527 vs baseline 0.969)
 
-Python / TypeScript・React / Ruby on Rails / Kotlin / Swift　・　GCP / BigQuery / Airflow / dbt　・　LLM / LangGraph / eval
+gate: FAIL
+  ✗ must-pass cases failed: cancel-billing-period, medical-refusal, legal-refusal
+  ✗ overall score fell by 0.527, over the allowed 0.020
+```
 
-[Wantedly](https://www.wantedly.com/id/masanari_makino)　・　[LinkedIn](https://www.linkedin.com/in/masanari-makino-817294243)
+### What I do day to day
+
+- **LLM systems** — LangGraph multi-agent architectures, RAG, knowledge graphs
+  (Neo4j), and the evaluation loop around them: golden datasets, LLM-as-judge,
+  RAGAS, tracing with Langfuse / LangSmith.
+- **Forward deployed engineering** — sitting with a client, turning their
+  business problem into requirements, and taking it through to production.
+- **Full stack** — Ruby on Rails + GraphQL, Python + FastAPI, React +
+  TypeScript, Kotlin.
+- **Data platforms** — built a company-wide platform on BigQuery + Looker at
+  Sansan: pipelines, dashboards, and the platform itself as an internal product.
+- **Infrastructure** — GKE Autopilot, ArgoCD, Terraform Cloud, Google Cloud.
+- **AI-assisted development tooling** — MCP servers, automated PR review, LLM
+  quality gates in pre-commit.
+
+### Background
+
+| | |
+| --- | --- |
+| **Coadmap** | AI engineer · 2026– |
+| **Sansan** | Data engineer / software engineer · 2023–2026 |
+| **Milldea** | Engineer · 2021–2023 |
+| **Datack** | Engineer · 2018–2021 |
+| **Keio University** | M.Eng, Open and Environmental Systems · virtualization for embedded systems security |
+
+### Elsewhere
+
+[LinkedIn](https://www.linkedin.com/in/masanari-makino-817294243) ·
+[Wantedly](https://www.wantedly.com/id/masanari_makino)
+
+Open to contract work on evenings and weekends — fully remote, asynchronous,
+around 10–20 hours a week. LLM evaluation and RAG systems, backend and
+infrastructure, or data platform work.
