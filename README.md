@@ -25,6 +25,27 @@ gate: FAIL
   ✗ overall score fell by 0.527, over the allowed 0.020
 ```
 
+**[graphrag-bench](https://github.com/Waddles1729/graphrag-bench)** — what a
+knowledge graph actually adds to retrieval, measured. A labelled corpus, five
+kinds of question, and four strategies scored against each other — including an
+oracle retriever that is handed the right passages, so a ranking problem can be
+told apart from a representation one. Neo4j and an in-process store behind one
+interface, checked against each other in CI.
+
+```
+strategy       budget  kind         full support  words
+vector(tfidf)      20  multihop              90%   1277
+vector(tfidf)      20  aggregation           50%   1303
+oracle              0  aggregation          100%    455
+graph(gold)         2  multihop             100%     78
+graph(gold)         2  aggregation          100%    211
+```
+
+The finding I did not expect: the extractor recovers 67 of 68 relations with no
+false positives, and that one missing edge makes 5 of 29 questions unanswerable.
+Support recall reports 100% for both graphs — document-level metrics cannot see
+it.
+
 **[querygate](https://github.com/Waddles1729/querygate)** — a read-only SQL MCP
 server. Give an agent a database without giving it the keys: a tokenising guard
 that refuses writes (including the ones hidden inside a CTE), tables the policy
